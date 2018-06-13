@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import Cats from "./Cats";
 
 class App extends Component {
   render() {
     return (
-      <div>
-          Cats.gg WIP
-      </div>
+        <Cats/>
     );
   }
 }

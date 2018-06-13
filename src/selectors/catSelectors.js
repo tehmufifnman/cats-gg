@@ -1,0 +1,1 @@
+export const getCat = state => state.cat.cat;
