@@ -23,20 +23,21 @@ export default function flickrTagSearch(tag) {
             .then(body => body.photos.photo)
             .then(photos => photos.map(photo => ({
                 square: photoUrl('q', photo),
-                medium: photoUrl('m', photo),
+                medium: photoUrl('z', photo),
+                large: photoUrl('k', photo),
             })))
     }
 
     return {
-        // [Symbol.asyncIterator]: async function*() {
-        //     let pageIndex = 1
-        //     while(true) {
-        //         const pageData = await flickrTagSearch(tag, pageIndex)
-        //         for (const photo of pageData) {
-        //             yield photo
-        //         }
-        //         pageIndex = pageIndex + 1
-        //     }
-        // }
+        [Symbol.iterator]: function*() {
+            let pageIndex = 1
+            while(true) {
+                const pageData = yield flickrTagSearch(tag, pageIndex)
+                for (const photo of pageData) {
+                    yield photo
+                }
+                pageIndex = pageIndex + 1
+            }
+        }
     }
 }
