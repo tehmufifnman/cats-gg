@@ -1,5 +1,29 @@
-#root {
-    display: flex;
-    align-items: stretch;
-    min-height: 100vh;
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+
+}
+
+.sub-heading {
+  margin-top: 0;
+}
+
+.app__body {
+  flex-grow: 1;
+}
+
+.app__footer {
+  font-size: 0.6em;
 }

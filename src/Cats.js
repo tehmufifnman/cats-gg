@@ -7,7 +7,7 @@ import {getCat} from "./selectors/catSelectors";
 class Cats extends Component {
   render() {
     return (
-      <div className="cats">
+      <div className={`cats ${this.props.className}`}>
         <img className="cats__image" src={this.props.cat} />
       </div>
     );
