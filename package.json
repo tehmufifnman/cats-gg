@@ -99,6 +99,6 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "babel-plugin-syntax-async-generators": "^6.13.0"
+    "babel-plugin-transform-async-generator-functions": "^6.24.1"
   }
 }
