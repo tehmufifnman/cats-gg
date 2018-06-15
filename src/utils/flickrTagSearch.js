@@ -32,11 +32,8 @@ export default function flickrTagSearch(tag) {
         [Symbol.iterator]: function*() {
             let pageIndex = 1
             while(true) {
-                const pageData = yield flickrTagSearch(tag, pageIndex)
-                for (const photo of pageData) {
-                    yield photo
-                }
-                pageIndex = pageIndex + 1
+                yield flickrTagSearch(tag, pageIndex);
+                pageIndex = pageIndex + 1;
             }
         }
     }

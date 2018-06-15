@@ -13,8 +13,9 @@ export default function* catSaga(action) {
   for (const nextCat of getCat) {
     const cats = yield nextCat;
     for (const cat of cats) {
-      yield delay(2);
       const img = cat.medium;
+      yield preloadImage(img);
+      yield delay(2);
       yield put(actions.setCat(img));
     }
   }
