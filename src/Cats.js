@@ -8,7 +8,9 @@ class Cats extends Component {
   render() {
     return (
       <div className={`cats ${this.props.className}`}>
-        <img className="cats__image" src={this.props.cat} />
+        <a href={this.props.cat} target="_blank" rel="noopener">
+          <img className="cats__image" src={this.props.cat} />
+        </a>
       </div>
     );
   }
