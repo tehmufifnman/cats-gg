@@ -1,0 +1,32 @@
+.cats {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.cats__image {
+    max-width: 100%;
+    margin-top: auto;
+}
+
+.cats__controls {
+    margin-top: auto;
+}
+
+.cats-control {
+    display: flex;
+    align-items: center;
+}
+
+.cats-control__delay-number-input {
+    width: 3em;
+    margin-left: 0.5em;
+    margin-right: 0.25em;
+}
+
+.cats-control__delay-number-range {
+    margin-left: 0.5em;
+}

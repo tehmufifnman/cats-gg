@@ -5,7 +5,8 @@ import preloadImage from "../utils/preloadImage";
 import pipe from "../utils/pipe";
 import flickrTagSearch from "../utils/flickrTagSearch";
 import * as actions from "../actions/catActions";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
+import {getSlideshowDelay} from "../selectors/catSelectors";
 
 const getCat = flickrTagSearch('cat,kitten');
 
@@ -15,7 +16,8 @@ export default function* catSaga(action) {
     for (const cat of cats) {
       const img = cat.medium;
       yield preloadImage(img);
-      yield delay(2);
+      const delaySeconds = yield select(getSlideshowDelay);
+      yield delay(delaySeconds);
       yield put(actions.setCat(img));
     }
   }
