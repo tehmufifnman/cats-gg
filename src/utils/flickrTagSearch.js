@@ -16,6 +16,7 @@ export default function flickrTagSearch(tag) {
             '&api_key=' + apiKey +
             '&page=' + page +
             '&tags=' + tag +
+            '&tag_mode=all' +
             '&format=json' +
             '&nojsoncallback=1'
         )

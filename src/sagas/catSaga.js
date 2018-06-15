@@ -7,7 +7,7 @@ import flickrTagSearch from "../utils/flickrTagSearch";
 import * as actions from "../actions/catActions";
 import { call, put, takeEvery } from "redux-saga/effects";
 
-const getCat = flickrTagSearch('cats');
+const getCat = flickrTagSearch('cat,kitten');
 
 export default function* catSaga(action) {
   for (const nextCat of getCat) {
