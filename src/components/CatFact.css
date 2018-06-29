@@ -1,0 +1,14 @@
+.cat-fact {
+  text-align: center;
+  cursor: pointer;
+}
+
+.cat-fact__label {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.cat-fact__fact {
+  font-size: 0.75em;
+  font-style: italic;
+}

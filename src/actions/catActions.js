@@ -17,3 +17,16 @@ export const setSlideshowDelay = (delay) => ({
     type: SET_SLIDESHOW_DELAY,
     payload: delay,
 });
+
+export const GET_NEXT_CAT_FACT = 'GET_NEXT_CAT_FACT';
+
+export const getNextCatFact = () => ({
+    type: GET_NEXT_CAT_FACT,
+});
+
+export const SET_CAT_FACT = 'SET_CAT_FACT';
+
+export const setCatFact = (catFact) => ({
+    type: SET_CAT_FACT,
+    payload: catFact,
+});

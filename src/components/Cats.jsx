@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Cats.css';
-import * as actions from "../actions/catActions";
 import {getCat, getSlideshowDelay} from "../selectors/catSelectors";
 import {setSlideshowDelay} from "../actions/catActions";
 

@@ -1,11 +1,8 @@
-import map from "../utils/map";
-import delayed from "../utils/delayed";
 import delay from "../utils/delay";
 import preloadImage from "../utils/preloadImage";
-import pipe from "../utils/pipe";
 import {flickrTagSearch, mapResponseToPhotos, fetchPhotos, appSettings} from "../utils/flickrTagSearch";
 import * as actions from "../actions/catActions";
-import { call, put, select, takeEvery } from "redux-saga/effects";
+import { put, select } from "redux-saga/effects";
 import {getSlideshowDelay} from "../selectors/catSelectors";
 
 // Set this on Application entry and pass it through your app by injection.

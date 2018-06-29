@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Cats from "./Cats";
+import CatFact from "./CatFact";
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
         <div className="app__header">
           <h1 className="heading">Cats.gg</h1>
           <h3 className="sub-heading">Bringing You Sweet Cat Pics Since 2018 😻</h3>
+          <CatFact/>
         </div>
         <Cats className="app__body"/>
         <div className="app__footer">
