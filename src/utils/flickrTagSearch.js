@@ -1,39 +1,56 @@
 import getFlickrApiKey from './getFlickrApiKey';
+import {path, composeP, map} from "ramda";
 
-export default function flickrTagSearch(tag) {
+//Set these in your entry point
+export const appSettings = {
+    uri: 'https://api.flickr.com/services/rest/',
+    key: getFlickrApiKey()
+}
 
-    const photoUrl = (size, photo) =>
-        `https://farm${photo.farm}.staticflickr.com/` +
-        `${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`
+const toJson = (response) => response.json();
+const photoFromBody = path(["photos", "photo"])
 
-    // Returs a Promise that resolves to an array of urls to images that
-    // represents a (paged) result of a tag search on Flickr.
-    function flickrTagSearch (tag, page) {
-        const apiKey = getFlickrApiKey()
-        return fetch(
-            'https://api.flickr.com/services/rest/' +
-            '?method=flickr.photos.search' +
-            '&api_key=' + apiKey +
-            '&page=' + page +
-            '&tags=' + tag +
-            '&tag_mode=all' +
-            '&format=json' +
-            '&nojsoncallback=1'
-        )
-            .then(response => response.json())
-            .then(body => body.photos.photo)
-            .then(photos => photos.map(photo => ({
-                square: photoUrl('q', photo),
-                medium: photoUrl('z', photo),
-                large: photoUrl('k', photo),
-            })))
-    }
+const photoUrl = (size) => (photo) =>
+`https://farm${photo.farm}.staticflickr.com/` +
+`${photo.server}/${photo.id}_${photo.secret}_${size}.jpg`
 
+const square = photoUrl('q');
+const medium = photoUrl('z');
+const large = photoUrl('k');
+
+const mapPhoto = (photo) => ({
+    square: square(photo),
+    medium: medium(photo),
+    large: large(photo)
+})
+
+// This allows your to trace steps of a pipe or composition to the console
+const trace = (tag) => (val) =>{
+    console.log(tag, val)
+    return val;
+}
+
+export const fetchPhotos = (appSettings) => (tag, page) =>
+     fetch(
+        appSettings.uri +
+        '?method=flickr.photos.search' +
+        '&api_key=' + appSettings.key +
+        '&page=' + page +
+        '&tags=' + tag +
+        '&tag_mode=all' +
+        '&format=json' +
+        '&nojsoncallback=1'
+     );
+     fetchPhotos(appSettings)
+
+export const mapResponseToPhotos = (httpService) => composeP(map(mapPhoto), photoFromBody, toJson, httpService);
+
+export const flickrTagSearch = (getPhotos) => (tag) => {
     return {
         [Symbol.iterator]: function*() {
             let pageIndex = 1
             while(true) {
-                yield flickrTagSearch(tag, pageIndex);
+                yield  getPhotos(tag, pageIndex);
                 pageIndex = pageIndex + 1;
             }
         }
