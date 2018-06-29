@@ -11,6 +11,13 @@ export const setCat = (cat) => ({
   payload: cat,
 });
 
+export const SET_CAT_GIF = 'SET_CAT_GIF';
+
+export const setCatGif = (catGif) => ({
+    type: SET_CAT_GIF,
+    payload: catGif,
+});
+
 export const SET_SLIDESHOW_DELAY = 'SET_SLIDESHOW_DELAY';
 
 export const setSlideshowDelay = (delay) => ({
@@ -29,4 +36,11 @@ export const SET_CAT_FACT = 'SET_CAT_FACT';
 export const setCatFact = (catFact) => ({
     type: SET_CAT_FACT,
     payload: catFact,
+});
+
+export const SET_DISPLAY_MODE = 'SET_DISPLAY_MODE';
+
+export const setDisplayMode = (displayMode) => ({
+    type: SET_DISPLAY_MODE,
+    payload: displayMode,
 });

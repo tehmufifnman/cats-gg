@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Cats.css';
-import {getCat, getSlideshowDelay} from "../selectors/catSelectors";
+import {
+    getSlideshowDelay,
+    getCatImageUrl,
+    getCatImageExternalUrl, getDisplayMode
+} from "../selectors/catSelectors";
 import {setSlideshowDelay} from "../actions/catActions";
+import * as DisplayMode from '../constants/displayMode';
+import * as actions from "../actions/catActions";
 
 class Cats extends Component {
   handleSlideshowSpeedChange = (event) => {
@@ -11,10 +17,18 @@ class Cats extends Component {
     this.props.dispatch(setSlideshowDelay(value));
   };
 
+  handleSetDisplayModeGif = (event) => {
+    this.props.dispatch(actions.setDisplayMode(DisplayMode.Gifs));
+  };
+
+  handleSetDisplayModePicture = (event) => {
+    this.props.dispatch(actions.setDisplayMode(DisplayMode.Pictures));
+  };
+
   render() {
     return (
       <div className={`cats ${this.props.className}`}>
-        <a className="cats__image" href={this.props.cat} target="_blank" rel="noopener">
+        <a className="cats__image" href={this.props.catLink} target="_blank" rel="noopener">
           <img src={this.props.cat} />
         </a>
         <div className="cats__controls">
@@ -33,6 +47,22 @@ class Cats extends Component {
                    onChange={this.handleSlideshowSpeedChange}
                    value={this.props.slideshowDelay}/>
           </label>
+          <button
+              className="cats-control"
+              disabled={this.props.displayMode === DisplayMode.Gifs}
+              onClick={this.handleSetDisplayModeGif}
+              title="View Cat Gifs"
+          >
+              Gifs
+          </button>
+          <button
+              className="cats-control"
+              disabled={this.props.displayMode === DisplayMode.Pictures}
+              onClick={this.handleSetDisplayModePicture}
+              title="View Cat Pictures"
+          >
+              Pics
+          </button>
         </div>
       </div>
     );
@@ -40,7 +70,9 @@ class Cats extends Component {
 }
 
 const mapStateToProps = state => ({
-  cat: getCat(state),
+  cat: getCatImageUrl(state),
+  catLink: getCatImageExternalUrl(state),
+  displayMode: getDisplayMode(state),
   slideshowDelay: getSlideshowDelay(state),
 });
 

@@ -12,13 +12,27 @@
     margin-top: auto;
 }
 
+.cats__image img {
+    max-width: 100%;
+}
+
 .cats__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     margin-top: auto;
 }
 
 .cats-control {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cats-control + .cats-control {
+    margin-left: 0.5em;
 }
 
 .cats-control__delay-number-input {

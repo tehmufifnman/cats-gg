@@ -11,7 +11,11 @@ class CatFact extends PureComponent {
 
     render() {
         return (
-            <div className="cat-fact" onClick={this.handleCatFactClick}>
+            <div
+                className="cat-fact"
+                onClick={this.handleCatFactClick}
+                title="Click for another cat fact!"
+            >
                 <div className="cat-fact__label">Did You Know?</div>
                 <div className="cat-fact__fact">{this.props.catFact}</div>
             </div>

@@ -1,6 +1,6 @@
 import delay from "../utils/delay";
 import preloadImage from "../utils/preloadImage";
-import {flickrTagSearch, mapResponseToPhotos, fetchPhotos, appSettings} from "../utils/flickrTagSearch";
+import {flickrTagSearch, mapResponseToPhotos, fetchPhotos, appSettings} from "../utils/flickr/flickrTagSearch";
 import * as actions from "../actions/catActions";
 import { put, select } from "redux-saga/effects";
 import {getSlideshowDelay} from "../selectors/catSelectors";
@@ -10,7 +10,7 @@ const getPhotosApplied = flickrTagSearch(mapResponseToPhotos(fetchPhotos(appSett
 
 const getCat = getPhotosApplied('cat,kitten');
 
-export default function* catSaga(action) {
+export default function* catPictureSaga(action) {
   for (const nextCat of getCat) {
     const cats = yield nextCat;
     for (const cat of cats) {

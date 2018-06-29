@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Cats from "./Cats";
 import CatFact from "./CatFact";
+import {connect} from 'react-redux';
+import {getDisplayMode} from "../selectors/catSelectors";
+import * as DisplayMode from '../constants/displayMode';
 
 class App extends Component {
   render() {
@@ -14,11 +17,21 @@ class App extends Component {
         </div>
         <Cats className="app__body"/>
         <div className="app__footer">
-          <p>Photos from Flickr. Blame their poor tagging quality for images that are not cats.</p>
+            {this.props.displayMode === DisplayMode.Pictures &&
+                <p className="app__footer-message">Photos from Flickr. Blame their poor tagging quality for images that are not cats.</p>}
+            {this.props.displayMode === DisplayMode.Gifs &&
+                <React.Fragment>
+                    <p className="app__footer-message">Gifs from Giphy.</p>
+                    <img className="app__giphy-attribution" src="/images/powered-by-giphy.png"/>
+                </React.Fragment>}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    displayMode: getDisplayMode(state),
+});
+
+export default connect(mapStateToProps)(App);
