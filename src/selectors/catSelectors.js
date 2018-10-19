@@ -4,41 +4,45 @@ import * as DisplayMode from '../constants/displayMode';
 const getCatState = state => state.cat;
 
 export const getDisplayMode = createSelector([
-    getCatState,
+  getCatState,
 ], state => state.displayMode);
 
 export const getCatPicture = createSelector([
-    getCatState,
+  getCatState,
 ], state => state.cat);
 
 export const getCatGif = createSelector([
-    getCatState,
+  getCatState,
 ], state => state.catGif);
 
 export const getCatFact = createSelector([
-    getCatState,
+  getCatState,
 ], state => state.catFact);
 
 export const getSlideshowDelay = createSelector([
-    getCatState,
+  getCatState,
 ], state => state.slideshowDelay);
 
+export const getStreamModeEnabled = createSelector([
+  getCatState,
+], state => state.streamModeEnabled);
+
 export const getCatGifUrl = createSelector([
-    getCatGif,
+  getCatGif,
 ], catGif => catGif.image_url);
 
 export const getCatGifExternalUrl = createSelector([
-    getCatGif,
+  getCatGif,
 ], catGif => catGif.url);
 
 export const getCatImageUrl = createSelector([
-    getDisplayMode,
-    getCatGifUrl,
-    getCatPicture,
+  getDisplayMode,
+  getCatGifUrl,
+  getCatPicture,
 ], (displayMode, catGif, catPicture) => displayMode === DisplayMode.Pictures ? catPicture : catGif);
 
 export const getCatImageExternalUrl = createSelector([
-    getDisplayMode,
-    getCatGifExternalUrl,
-    getCatPicture,
+  getDisplayMode,
+  getCatGifExternalUrl,
+  getCatPicture,
 ], (displayMode, catGif, catPicture) => displayMode === DisplayMode.Pictures ? catPicture : catGif);

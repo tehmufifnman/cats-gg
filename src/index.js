@@ -8,7 +8,7 @@ import rootSaga from './sagas/rootSaga';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import * as catActions from './actions/catActions';
+import * as initActions from "./actions/initActions";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -17,7 +17,7 @@ const store = createStore(
 );
 sagaMiddleware.run(rootSaga);
 
-store.dispatch(catActions.getNextCatFact());
+store.dispatch(initActions.init());
 
 ReactDOM.render(
     <Provider store={store}>

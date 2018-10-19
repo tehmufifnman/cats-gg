@@ -14,33 +14,40 @@ export const setCat = (cat) => ({
 export const SET_CAT_GIF = 'SET_CAT_GIF';
 
 export const setCatGif = (catGif) => ({
-    type: SET_CAT_GIF,
-    payload: catGif,
+  type: SET_CAT_GIF,
+  payload: catGif,
 });
 
 export const SET_SLIDESHOW_DELAY = 'SET_SLIDESHOW_DELAY';
 
 export const setSlideshowDelay = (delay) => ({
-    type: SET_SLIDESHOW_DELAY,
-    payload: delay,
+  type: SET_SLIDESHOW_DELAY,
+  payload: delay,
 });
 
 export const GET_NEXT_CAT_FACT = 'GET_NEXT_CAT_FACT';
 
 export const getNextCatFact = () => ({
-    type: GET_NEXT_CAT_FACT,
+  type: GET_NEXT_CAT_FACT,
 });
 
 export const SET_CAT_FACT = 'SET_CAT_FACT';
 
 export const setCatFact = (catFact) => ({
-    type: SET_CAT_FACT,
-    payload: catFact,
+  type: SET_CAT_FACT,
+  payload: catFact,
 });
 
 export const SET_DISPLAY_MODE = 'SET_DISPLAY_MODE';
 
 export const setDisplayMode = (displayMode) => ({
-    type: SET_DISPLAY_MODE,
-    payload: displayMode,
+  type: SET_DISPLAY_MODE,
+  payload: displayMode,
+});
+
+export const SET_STREAM_MODE_ENABLED = 'SET_STREAM_MODE_ENABLED';
+
+export const setStreamModeEnabled = (streamModeEnabled) => ({
+  type: SET_STREAM_MODE_ENABLED,
+  payload: streamModeEnabled,
 });
