@@ -10,6 +10,10 @@ export const getIndex = createSelector([
   getSlideshow,
 ], slideshow => slideshow.index);
 
+export const getImageCount = createSelector([
+  getImages,
+], images => images.length);
+
 export const getIsPlaying = createSelector([
   getSlideshow,
 ], slideshow => slideshow.isPlaying);

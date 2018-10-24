@@ -1,50 +1,51 @@
 .cats {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .cats__image {
-    max-width: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
+  max-width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .cats__image img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .stream-mode-enabled .cats__image img {
-    max-height: 100vh;
+  max-height: 100vh;
 }
 
 .cats__controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .cats-control {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cats-control + .cats-control {
-    margin-left: 0.5em;
+  margin-left: 0.5em;
 }
 
 .cats-control__delay-number-input {
-    width: 3em;
-    margin-left: 0.5em;
-    margin-right: 0.25em;
+  width: 3em;
+  margin-left: 0.5em;
+  margin-right: 0.25em;
 }
 
 .cats-control__delay-number-range {
-    margin-left: 0.5em;
+  margin-left: 0.5em;
 }
