@@ -1,6 +1,7 @@
 import { put, select, takeEvery } from "redux-saga/effects";
 import * as catActions from "../actions/catActions";
 import * as initActions from '../actions/initActions';
+import * as slideshowActions from '../actions/slideshowActions';
 import getQueryStringParameters from '../utils/getQueryStringParameters';
 import * as DisplayMode from '../constants/displayMode';
 
@@ -18,12 +19,14 @@ function* init() {
   }
 
   if (slideshowDelay) {
-    yield put(catActions.setSlideshowDelay(parseInt(slideshowDelay, 10)));
+    yield put(slideshowActions.setDelay(parseInt(slideshowDelay, 10)));
   }
 
   if (streamModeEnabled === 'true') {
     yield put(catActions.setStreamModeEnabled(true));
   }
+
+  yield put(slideshowActions.play());
 }
 
 export default function* initSaga() {

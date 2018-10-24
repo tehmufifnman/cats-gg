@@ -4,8 +4,18 @@ import './Cats.css';
 import * as catSelectors from "../selectors/catSelectors";
 import * as DisplayMode from '../constants/displayMode';
 import * as catActions from "../actions/catActions";
+import * as slideshowActions from '../actions/slideshowActions';
+import * as slideshowSelectors from '../selectors/slideshowSelectors';
 
 class Cats extends PureComponent {
+  handlePlayPauseToggle = () => {
+    if (this.props.isPlaying) {
+      this.props.dispatch(slideshowActions.pause());
+    } else {
+      this.props.dispatch(slideshowActions.play());
+    }
+  };
+
   handleSlideshowSpeedChange = (event) => {
     const value = event.target.value;
 
@@ -23,11 +33,18 @@ class Cats extends PureComponent {
   render() {
     return (
       <div className={`cats ${this.props.className}`}>
-        <a className="cats__image" href={this.props.catLink} target="_blank" rel="noopener">
-          <img src={this.props.cat} />
+        <a className="cats__image" href={this.props.currentImage} target="_blank" rel="noopener">
+          <img src={this.props.currentImage} />
         </a>
         {!this.props.streamModeEnabled &&
           <div className="cats__controls">
+            <button
+              className="cats-control"
+              onClick={this.handlePlayPauseToggle}
+              title="Start/Stop Slideshow"
+            >
+              {this.props.isPlaying ? 'Pause' : 'Play'}
+            </button>
             <label className="cats-control">
               Delay
               <input type="number"
@@ -69,7 +86,9 @@ class Cats extends PureComponent {
 const mapStateToProps = state => ({
   cat: catSelectors.getCatImageUrl(state),
   catLink: catSelectors.getCatImageExternalUrl(state),
+  currentImage: slideshowSelectors.getCurrentImage(state),
   displayMode: catSelectors.getDisplayMode(state),
+  isPlaying: slideshowSelectors.getIsPlaying(state),
   slideshowDelay: catSelectors.getSlideshowDelay(state),
   streamModeEnabled: catSelectors.getStreamModeEnabled(state),
 });
