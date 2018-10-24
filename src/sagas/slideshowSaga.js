@@ -58,7 +58,7 @@ function* previousImage() {
 
 function* play() {
   yield put(slideshowActions.setIsPlaying(true));
-  yield put(slideshowActions.nextImage());
+  yield call(nextImage);
   const slideshowDelay = yield select(slideshowSelectors.getSlideshowDelay);
   yield delay(slideshowDelay);
   const isPlaying = yield select(slideshowSelectors.getIsPlaying);
@@ -76,9 +76,11 @@ function* slideshowFilter(action) {
       yield put(slideshowActions.setIsPlaying(false));
       break;
     case slideshowActionTypes.NEXT_IMAGE:
+      yield put(slideshowActions.setIsPlaying(false));
       yield call(nextImage);
       break;
     case slideshowActionTypes.PREVIOUS_IMAGE:
+      yield put(slideshowActions.setIsPlaying(false));
       yield call(previousImage);
       break;
   }

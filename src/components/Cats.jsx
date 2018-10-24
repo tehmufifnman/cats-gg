@@ -8,6 +8,14 @@ import * as slideshowActions from '../actions/slideshowActions';
 import * as slideshowSelectors from '../selectors/slideshowSelectors';
 
 class Cats extends PureComponent {
+  handlePreviousClick = () => {
+    this.props.dispatch(slideshowActions.previousImage());
+  };
+
+  handleNextClick = () => {
+    this.props.dispatch(slideshowActions.nextImage());
+  };
+
   handlePlayPauseToggle = () => {
     if (this.props.isPlaying) {
       this.props.dispatch(slideshowActions.pause());
@@ -40,10 +48,25 @@ class Cats extends PureComponent {
           <div className="cats__controls">
             <button
               className="cats-control"
+              disabled={this.props.isAtBeginningOfImages}
+              onClick={this.handlePreviousClick}
+              title="Go to previous image"
+            >
+              Previous
+            </button>
+            <button
+              className="cats-control"
               onClick={this.handlePlayPauseToggle}
               title="Start/Stop Slideshow"
             >
               {this.props.isPlaying ? 'Pause' : 'Play'}
+            </button>
+            <button
+              className="cats-control"
+              onClick={this.handleNextClick}
+              title="Go to next image"
+            >
+              Next
             </button>
             <label className="cats-control">
               Delay
@@ -88,6 +111,7 @@ const mapStateToProps = state => ({
   catLink: catSelectors.getCatImageExternalUrl(state),
   currentImage: slideshowSelectors.getCurrentImage(state),
   displayMode: catSelectors.getDisplayMode(state),
+  isAtBeginningOfImages: slideshowSelectors.isAtBeginningOfImages(state),
   isPlaying: slideshowSelectors.getIsPlaying(state),
   slideshowDelay: catSelectors.getSlideshowDelay(state),
   streamModeEnabled: catSelectors.getStreamModeEnabled(state),
