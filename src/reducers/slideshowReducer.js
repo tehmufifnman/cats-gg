@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case types.SET_INDEX:
       return { ...state, index: action.payload };
     case types.SET_DELAY:
-      return { ...state, index: action.payload };
+      return { ...state, delay: action.payload };
     case types.SET_IS_PLAYING:
       return { ...state, isPlaying: action.payload };
     default:

@@ -25,9 +25,9 @@ class Cats extends PureComponent {
   };
 
   handleSlideshowSpeedChange = (event) => {
-    const value = event.target.value;
+    const value = parseInt(event.target.value, 10);
 
-    this.props.dispatch(catActions.setSlideshowDelay(value));
+    this.props.dispatch(slideshowActions.setDelay(value));
   };
 
   handleSetDisplayModeGif = (event) => {
@@ -125,7 +125,7 @@ const mapStateToProps = state => ({
   index: slideshowSelectors.getIndex(state),
   imageCount: slideshowSelectors.getImageCount(state),
   isPlaying: slideshowSelectors.getIsPlaying(state),
-  slideshowDelay: catSelectors.getSlideshowDelay(state),
+  slideshowDelay: slideshowSelectors.getSlideshowDelay(state),
   streamModeEnabled: catSelectors.getStreamModeEnabled(state),
 });
 

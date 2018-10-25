@@ -9,7 +9,6 @@ const initialState = {
   },
   catFact: '',
   displayMode: displayMode.Gifs,
-  slideshowDelay: 2,
   streamModeEnabled: false,
 };
 
@@ -17,8 +16,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case actions.SET_CAT:
       return { ...state, cat: action.payload };
-    case actions.SET_SLIDESHOW_DELAY:
-      return { ...state, slideshowDelay: action.payload };
     case actions.SET_CAT_FACT:
       return { ...state, catFact: action.payload };
     case actions.SET_CAT_GIF:

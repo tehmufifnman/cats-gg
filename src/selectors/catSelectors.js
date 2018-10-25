@@ -19,10 +19,6 @@ export const getCatFact = createSelector([
   getCatState,
 ], state => state.catFact);
 
-export const getSlideshowDelay = createSelector([
-  getCatState,
-], state => state.slideshowDelay);
-
 export const getStreamModeEnabled = createSelector([
   getCatState,
 ], state => state.streamModeEnabled);

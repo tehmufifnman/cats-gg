@@ -18,13 +18,6 @@ export const setCatGif = (catGif) => ({
   payload: catGif,
 });
 
-export const SET_SLIDESHOW_DELAY = 'SET_SLIDESHOW_DELAY';
-
-export const setSlideshowDelay = (delay) => ({
-  type: SET_SLIDESHOW_DELAY,
-  payload: delay,
-});
-
 export const GET_NEXT_CAT_FACT = 'GET_NEXT_CAT_FACT';
 
 export const getNextCatFact = () => ({
