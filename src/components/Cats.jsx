@@ -6,21 +6,39 @@ import * as DisplayMode from '../constants/displayMode';
 import * as catActions from "../actions/catActions";
 import * as slideshowActions from '../actions/slideshowActions';
 import * as slideshowSelectors from '../selectors/slideshowSelectors';
+import * as analytics from '../utils/analytics';
+import { EventCategories, EventActions } from '../constants/analytics';
 
 class Cats extends PureComponent {
   handlePreviousClick = () => {
     this.props.dispatch(slideshowActions.previousImage());
+    analytics.logEvent({
+      eventCategory: EventCategories.Paging,
+      eventAction: EventActions.Paging_Previous,
+    });
   };
 
   handleNextClick = () => {
     this.props.dispatch(slideshowActions.nextImage());
+    analytics.logEvent({
+      eventCategory: EventCategories.Paging,
+      eventAction: EventActions.Paging_Next,
+    });
   };
 
   handlePlayPauseToggle = () => {
     if (this.props.isPlaying) {
       this.props.dispatch(slideshowActions.pause());
+      analytics.logEvent({
+        eventCategory: EventCategories.PlayPause,
+        eventAction: EventActions.PlayPause_Stop,
+      });
     } else {
       this.props.dispatch(slideshowActions.play());
+      analytics.logEvent({
+        eventCategory: EventCategories.PlayPause,
+        eventAction: EventActions.PlayPause_Start,
+      });
     }
   };
 
@@ -28,20 +46,51 @@ class Cats extends PureComponent {
     const value = parseInt(event.target.value, 10);
 
     this.props.dispatch(slideshowActions.setDelay(value));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.SlideshowDelay,
+      eventAction: EventActions.SlideshowDelay_Changed,
+      eventValue: value,
+    });
   };
 
   handleSetDisplayModeGif = (event) => {
     this.props.dispatch(catActions.setDisplayMode(DisplayMode.Gifs));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.DisplayMode,
+      eventAction: EventActions.DisplayMode_Changed,
+      eventLabel: DisplayMode.Gifs,
+    });
   };
 
   handleSetDisplayModePicture = (event) => {
     this.props.dispatch(catActions.setDisplayMode(DisplayMode.Pictures));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.DisplayMode,
+      eventAction: EventActions.DisplayMode_Changed,
+      eventLabel: DisplayMode.Pictures,
+    });
+  };
+
+  handleImageClick = () => {
+    analytics.logEvent({
+      eventCategory: EventCategories.Image,
+      eventAction: EventActions.Image_Click,
+    });
   };
 
   render() {
     return (
       <div className={`cats ${this.props.className}`}>
-        <a className="cats__image" href={this.props.currentImage} target="_blank" rel="noopener">
+        <a
+          className="cats__image"
+          href={this.props.currentImage}
+          target="_blank"
+          rel="noopener"
+          onClick={this.handleImageClick}
+        >
           <img src={this.props.currentImage} />
         </a>
         {!this.props.streamModeEnabled &&

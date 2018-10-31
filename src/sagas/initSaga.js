@@ -4,26 +4,49 @@ import * as initActions from '../actions/initActions';
 import * as slideshowActions from '../actions/slideshowActions';
 import getQueryStringParameters from '../utils/getQueryStringParameters';
 import * as DisplayMode from '../constants/displayMode';
+import * as analytics from '../utils/analytics';
+import { EventCategories, EventActions } from '../constants/analytics';
 
 function* init() {
+  analytics.initAnalytics();
+
   yield put(catActions.getNextCatFact());
 
   const {
     displayMode,
     slideshowDelay,
+    streamMode,
     streamModeEnabled,
   } = getQueryStringParameters();
 
   if (Object.values(DisplayMode).includes(displayMode)) {
     yield put(catActions.setDisplayMode(displayMode));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.QueryString,
+      eventAction: EventActions.QueryString_DisplayMode,
+      eventLabel: displayMode,
+    });
   }
 
   if (slideshowDelay) {
-    yield put(slideshowActions.setDelay(parseInt(slideshowDelay, 10)));
+    const slideshowDelayNumber = parseInt(slideshowDelay, 10);
+    yield put(slideshowActions.setDelay(slideshowDelayNumber));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.QueryString,
+      eventAction: EventActions.QueryString_SlideshowDelay,
+      eventLabel: slideshowDelayNumber,
+    });
   }
 
-  if (streamModeEnabled === 'true') {
+  if (streamMode !== undefined || streamModeEnabled !== undefined) {
     yield put(catActions.setStreamModeEnabled(true));
+
+    analytics.logEvent({
+      eventCategory: EventCategories.QueryString,
+      eventAction: EventActions.QueryString_StreamMode,
+    });
   }
 
   yield put(slideshowActions.play());
