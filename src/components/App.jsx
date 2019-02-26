@@ -5,14 +5,37 @@ import CatFact from "./CatFact";
 import {connect} from 'react-redux';
 import * as catSelectors from "../selectors/catSelectors";
 import * as DisplayMode from '../constants/displayMode';
+import * as Theme from '../constants/theme';
+import * as catActions from '../actions/catActions';
 
 class App extends Component {
+  handleThemeToggle = () => {
+    if (this.props.theme === Theme.Light) {
+      this.props.dispatch(catActions.setTheme(Theme.Dark));
+    } else if (this.props.theme === Theme.Dark) {
+      this.props.dispatch(catActions.setTheme(Theme.Light));
+    }
+  };
+
   render() {
     return (
       <div className={[
         'app',
-        this.props.streamModeEnabled ? 'stream-mode-enabled' : '',
-      ].join(' ')}>
+        this.props.streamModeEnabled && 'stream-mode-enabled',
+        `theme--${this.props.theme}`
+      ]
+          .filter(Boolean)
+          .join(' ')
+      }>
+        {!this.props.streamModeEnabled &&
+          <button
+              className="app__theme-toggle"
+              onClick={this.handleThemeToggle}
+          >
+            {this.props.theme === Theme.Light && '🌅'}
+            {this.props.theme === Theme.Dark && '🌇'}
+          </button>
+        }
         {!this.props.streamModeEnabled &&
           <div className="app__header">
             <h1 className="heading">Cats.gg</h1>
@@ -42,6 +65,7 @@ class App extends Component {
 const mapStateToProps = state => ({
   displayMode: catSelectors.getDisplayMode(state),
   streamModeEnabled: catSelectors.getStreamModeEnabled(state),
+  theme: catSelectors.getTheme(state),
 });
 
 export default connect(mapStateToProps)(App);

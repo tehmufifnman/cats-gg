@@ -5,6 +5,7 @@ import * as slideshowActions from '../actions/slideshowActions';
 import getQueryStringParameters from '../utils/getQueryStringParameters';
 import * as DisplayMode from '../constants/displayMode';
 import * as analytics from '../utils/analytics';
+import * as Theme from '../constants/theme';
 import { EventCategories, EventActions } from '../constants/analytics';
 
 function* init() {
@@ -17,6 +18,7 @@ function* init() {
     slideshowDelay,
     streamMode,
     streamModeEnabled,
+    theme,
   } = getQueryStringParameters();
 
   if (Object.values(DisplayMode).includes(displayMode)) {
@@ -47,6 +49,10 @@ function* init() {
       eventCategory: EventCategories.QueryString,
       eventAction: EventActions.QueryString_StreamMode,
     });
+  }
+
+  if (theme && Object.values(Theme).includes(theme.toLowerCase())) {
+    yield put(catActions.setTheme(theme.toLowerCase()));
   }
 
   yield put(slideshowActions.play());

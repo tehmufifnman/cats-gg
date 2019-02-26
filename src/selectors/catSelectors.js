@@ -42,3 +42,7 @@ export const getCatImageExternalUrl = createSelector([
   getCatGifExternalUrl,
   getCatPicture,
 ], (displayMode, catGif, catPicture) => displayMode === DisplayMode.Pictures ? catPicture : catGif);
+
+export const getTheme = createSelector([
+    getCatState,
+], state => state.theme);

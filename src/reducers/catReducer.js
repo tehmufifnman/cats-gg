@@ -1,5 +1,6 @@
 import * as actions from '../actions/catActions';
 import * as displayMode from '../constants/displayMode';
+import * as Theme from '../constants/theme';
 
 const initialState = {
   cat: '/favicon.ico',
@@ -10,6 +11,7 @@ const initialState = {
   catFact: '',
   displayMode: displayMode.Gifs,
   streamModeEnabled: false,
+  theme: Theme.Light,
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +26,8 @@ export default (state = initialState, action) => {
       return { ...state, displayMode: action.payload };
     case actions.SET_STREAM_MODE_ENABLED:
       return { ...state, streamModeEnabled: action.payload };
+    case actions.SET_THEME:
+      return { ...state, theme: action.payload };
     default:
       return state;
   }
