@@ -44,3 +44,10 @@ export const setStreamModeEnabled = (streamModeEnabled) => ({
   type: SET_STREAM_MODE_ENABLED,
   payload: streamModeEnabled,
 });
+
+export const SET_THEME = 'SET_THEME';
+
+export const setTheme = (theme) => ({
+  type: SET_THEME,
+  payload: theme,
+});

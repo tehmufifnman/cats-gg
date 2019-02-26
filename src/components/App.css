@@ -41,3 +41,38 @@
   right: 0;
   bottom: 0;
 }
+
+.app__theme-toggle {
+  appearance: none;
+  -moz-appearance: none;
+  background: transparent !important;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.theme--light {
+
+}
+
+.theme--dark {
+  background: #222;
+  color: #CCC;
+}
+
+.theme--dark button,
+.theme--dark input {
+  border-color: #444;
+  background: #666;
+  color: #CCC;
+}
+
+.theme--dark a {
+  color: #33F;
+}
