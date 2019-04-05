@@ -18,10 +18,39 @@
 }
 
 .emoji-listing__emoji {
+    appearance: none;
     border: 1px solid black;
+    background: none;
     padding: 0.5em;
+    position: relative;
+}
+
+@keyframes copiedFade {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.emoji-listing__emoji.copied:before {
+    content: 'Copied!';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 0.5em;
+    background: white;
+    animation: copiedFade 1000ms;
+    opacity: 0;
 }
 
 .theme--dark .emoji-listing__emoji {
     border-color: #666;
+}
+
+.theme--dark .emoji-listing__emoji.copied:before {
+    background: #222;
 }
