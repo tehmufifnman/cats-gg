@@ -6,10 +6,16 @@ import catEmojis from '../data/cat-emoji.json';
 class EmojiPage extends PureComponent {
     static propTypes = {
         className: PropTypes.string,
+        copyAnimationDuration: PropTypes.number,
     };
 
     static defaultProps = {
         className: '',
+        copyAnimationDuration: 1000,
+    };
+
+    state = {
+        copiedEmoji: null,
     };
 
     handleEmojiClicked = event => {
@@ -20,6 +26,20 @@ class EmojiPage extends PureComponent {
         textElement.select();
         document.execCommand('copy');
         textElement.remove();
+
+        this.runCopyAnimation(emoji);
+    };
+
+    runCopyAnimation = emoji => {
+        this.setState({
+            copiedEmoji: emoji,
+        });
+        if (this.copyAnimationTimeout) {
+            window.clearTimeout(this.copyAnimationTimeout);
+        }
+        this.copyAnimationTimeout = window.setTimeout(() => this.setState({
+            copiedEmoji: null,
+        }), this.props.copyAnimationDuration);
     };
 
     render() {
@@ -36,13 +56,19 @@ class EmojiPage extends PureComponent {
                 <div className="emoji-page__click-prompt">Click to copy!</div>
                 <div className="emoji-listing">
                     {catEmojis.map(emoji =>
-                        <div
-                            className="emoji-listing__emoji"
+                        <button
+                            className={[
+                                'emoji-listing__emoji',
+                                this.state.copiedEmoji === emoji && 'copied',
+                            ]
+                                .filter(Boolean)
+                                .join(' ')
+                            }
                             key={emoji}
                             onClick={this.handleEmojiClicked}
                         >
                             {emoji}
-                        </div>
+                        </button>
                     )}
                 </div>
             </div>
