@@ -16,3 +16,5 @@ Options:
     * E.G. `cats.gg?slideshowDelay=5`
 * `streamModeEnabled=true`
     * Enables stream mode, removing all UI elements besides the images
+* `theme=dark`
+   * Enables the dark theme
