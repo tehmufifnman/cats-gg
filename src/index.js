@@ -10,6 +10,7 @@ import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import * as initActions from "./actions/initActions";
+import { BrowserRouter } from 'react-router-dom';
 
 const sagaMiddleware = createSagaMiddleware();
 let middleware = [
@@ -30,7 +31,9 @@ store.dispatch(initActions.init());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

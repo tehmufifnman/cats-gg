@@ -1,0 +1,27 @@
+.emoji-page {
+    padding: 2em;
+    align-self: stretch;
+}
+
+.emoji-page__click-prompt {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.emoji-listing {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-row-gap: 2em;
+    grid-column-gap: 2em;
+    justify-content: center;
+    text-align: center;
+}
+
+.emoji-listing__emoji {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+.theme--dark .emoji-listing__emoji {
+    border-color: #666;
+}
