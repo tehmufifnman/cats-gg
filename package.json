@@ -56,6 +56,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "create-cool-cats-map": "node scripts/create-cool-cats-map.js",
     "download-cool-cats": "node scripts/download-cool-cats.js -f cool-cats.txt",
     "start": "node scripts/start.js",
     "serve": "PORT=3001 forever start scripts/start.js",

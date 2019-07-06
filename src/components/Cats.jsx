@@ -54,23 +54,13 @@ class Cats extends PureComponent {
     });
   };
 
-  handleSetDisplayModeGif = (event) => {
-    this.props.dispatch(catActions.setDisplayMode(DisplayMode.Gifs));
+  handleSetDisplayMode = displayMode => {
+    this.props.dispatch(catActions.setDisplayMode(displayMode));
 
     analytics.logEvent({
       eventCategory: EventCategories.DisplayMode,
       eventAction: EventActions.DisplayMode_Changed,
-      eventLabel: DisplayMode.Gifs,
-    });
-  };
-
-  handleSetDisplayModePicture = (event) => {
-    this.props.dispatch(catActions.setDisplayMode(DisplayMode.Pictures));
-
-    analytics.logEvent({
-      eventCategory: EventCategories.DisplayMode,
-      eventAction: EventActions.DisplayMode_Changed,
-      eventLabel: DisplayMode.Pictures,
+      eventLabel: displayMode,
     });
   };
 
@@ -144,18 +134,26 @@ class Cats extends PureComponent {
               <button
                 className="cats-control"
                 disabled={this.props.displayMode === DisplayMode.Gifs}
-                onClick={this.handleSetDisplayModeGif}
+                onClick={this.handleSetDisplayMode.bind(this, DisplayMode.Gifs)}
                 title="View Cat Gifs"
               >
-                Gifs
+                🎥 Gifs
               </button>
               <button
                 className="cats-control"
                 disabled={this.props.displayMode === DisplayMode.Pictures}
-                onClick={this.handleSetDisplayModePicture}
+                onClick={this.handleSetDisplayMode.bind(this, DisplayMode.Pictures)}
                 title="View Cat Pictures"
               >
-                Pics
+                📷 Pics
+              </button>
+              <button
+                className="cats-control"
+                disabled={this.props.displayMode === DisplayMode.CoolCats}
+                onClick={this.handleSetDisplayMode.bind(this, DisplayMode.CoolCats)}
+                title="View Cool Cats"
+              >
+                😎 Cool Cats
               </button>
             </div>
           </div>

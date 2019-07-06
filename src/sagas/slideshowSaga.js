@@ -8,6 +8,8 @@ import getRandomCatGif from "../utils/giphy/getRandomCatGif";
 import getRandomImage from '../utils/unsplash/getRandomImage';
 import preloadImage from "../utils/preloadImage";
 import delay from "../utils/delay";
+import coolCats from "../data/generated/cool-cats.json";
+import getRandomItem from "../utils/getRandomItem";
 
 const getRandomCatImage = getRandomImage('cats', 'kittens');
 
@@ -21,6 +23,11 @@ function* getNewGifImage() {
   return yield preloadImage(gif.image_url);
 }
 
+function* getNewCoolCatImage() {
+  const coolCat = getRandomItem(coolCats);
+  return yield preloadImage(`/images/cool-cats/${coolCat}`);
+}
+
 function* getNewImage() {
   const displayMode = yield select(catSelectors.getDisplayMode);
   switch (displayMode) {
@@ -28,6 +35,8 @@ function* getNewImage() {
       return yield call(getNewGifImage);
     case DisplayMode.Pictures:
       return yield call(getNewPictureImage);
+    case DisplayMode.CoolCats:
+      return yield call(getNewCoolCatImage);
   }
 }
 
