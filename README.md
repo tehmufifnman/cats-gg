@@ -1,3 +1,4 @@
+[![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com)
 # cats-gg
 [Cats.gg](http://cats.gg/) - Sweet Cat Pics!
 
