@@ -23,38 +23,34 @@ class App extends Component {
     return (
       <div className={[
         'app',
-        this.props.streamModeEnabled && 'stream-mode-enabled',
+        this.props.streamModeEnabled ? 'stream-mode-enabled' : 'stream-mode-disabled',
         `theme--${this.props.theme}`
       ]
           .filter(Boolean)
           .join(' ')
       }>
-        {!this.props.streamModeEnabled &&
-          <button
-              className="app__theme-toggle"
-              onClick={this.handleThemeToggle}
-          >
-            {this.props.theme === Theme.Light && '🌅'}
-            {this.props.theme === Theme.Dark && '🌇'}
-          </button>
-        }
-        {!this.props.streamModeEnabled &&
-          <div className="app__header">
-            <h1 className="heading">Cats.gg</h1>
-            <h3 className="sub-heading">
-              <span>Bringing You Sweet Cat</span>
-              {' '}
-              <Link to="/">Pics</Link>
-              {' '}
-              <Link to="emoji">(and Emoji!)</Link>
-              {' '}
-              <span>Since 2018 😻</span>
-            </h3>
-            <CatFact/>
-          </div>
-        }
+        <button
+            className="app__theme-toggle"
+            onClick={this.handleThemeToggle}
+        >
+          {this.props.theme === Theme.Light && '🌅'}
+          {this.props.theme === Theme.Dark && '🌇'}
+        </button>
+        <div className="app__header">
+          <h1 className="heading">Cats.gg</h1>
+          <h3 className="sub-heading">
+            <span>Bringing You Sweet Cat</span>
+            {' '}
+            <Link to="/">Pics</Link>
+            {' '}
+            <Link to="emoji">(and Emoji!)</Link>
+            {' '}
+            <span>Since 2018 😻</span>
+          </h3>
+          <CatFact/>
+        </div>
         <PageBodyRouter className="app__body"/>
-        {!this.props.streamModeEnabled && <PageFooterRouter className="app__footer"/>}
+        <PageFooterRouter className="app__footer"/>
         <GithubCorner theme={this.props.theme}/>
       </div>
     );

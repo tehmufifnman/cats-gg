@@ -79,3 +79,8 @@
 .theme--dark a {
   color: #33F;
 }
+
+
+.app.stream-mode-enabled > *:not(.app__body) {
+  display: none;
+}
