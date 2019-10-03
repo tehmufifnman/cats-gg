@@ -49,16 +49,19 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  font-size: 2rem;
   width: 2em;
   height: 2em;
 
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
+  z-index: 1;
 }
 
 .theme--light {
-
+  background: white;
+  color: black;
 }
 
 .theme--dark {

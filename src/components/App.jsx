@@ -8,6 +8,7 @@ import * as catActions from '../actions/catActions';
 import PageBodyRouter from './PageBodyRouter';
 import PageFooterRouter from './PageFooterRouter';
 import { Link } from 'react-router-dom';
+import GithubCorner from './GithubCorner';
 
 class App extends Component {
   handleThemeToggle = () => {
@@ -54,6 +55,7 @@ class App extends Component {
         }
         <PageBodyRouter className="app__body"/>
         {!this.props.streamModeEnabled && <PageFooterRouter className="app__footer"/>}
+        <GithubCorner theme={this.props.theme}/>
       </div>
     );
   }
