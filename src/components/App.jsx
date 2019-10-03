@@ -32,6 +32,7 @@ class App extends Component {
         <button
             className="app__theme-toggle"
             onClick={this.handleThemeToggle}
+            title="Toggle Theme"
         >
           {this.props.theme === Theme.Light && '🌅'}
           {this.props.theme === Theme.Dark && '🌇'}
