@@ -1,6 +1,6 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com)
 # cats-gg
-[Cats.gg](http://cats.gg/) - Sweet Cat Pics!
+[Cats.gg](http://cats.gg/) - Serving you sweet cat pics using intentionally bad code since 2018!
 
 # Query Parameters
 Settings can be configured using query parameters for viewing in other apps such as OBS.
