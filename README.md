@@ -1,12 +1,12 @@
 [![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com)
 # cats-gg
-[Cats.gg](http://cats.gg/) - Serving you sweet cat pics using intentionally bad code since 2018!
+[Cats.gg](https://cats.gg/) - Serving you sweet cat pics using intentionally bad code since 2018!
 
 # Query Parameters
 Settings can be configured using query parameters for viewing in other apps such as OBS.
 
 Example usage:
-http://cats.gg/?streamModeEnabled=true&displayMode=DISPLAY_MODE_GIFS&slideshowDelay=2
+https://cats.gg/?streamModeEnabled=true&displayMode=DISPLAY_MODE_GIFS&slideshowDelay=2
 
 Options:
 * `displayMode=<DISPLAY_MODE_GIFS|DISPLAY_MODE_PICTURES>`
