@@ -20,7 +20,7 @@ function* getNewPictureImage() {
 
 function* getNewGifImage() {
   const gif = yield getRandomCatGif();
-  return yield preloadImage(gif.image_url);
+  return yield preloadImage(gif);
 }
 
 function* getNewCoolCatImage() {
@@ -42,7 +42,9 @@ function* getNewImage() {
 
 function* addNewImage() {
   const image = yield call(getNewImage);
-  yield put(slideshowActions.addImage(image));
+  if (image) {
+    yield put(slideshowActions.addImage(image));
+  }
 }
 
 function* nextImage() {
