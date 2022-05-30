@@ -15,6 +15,7 @@
 
 .cats__image img {
   max-width: 100%;
+  max-height:50vh;
 }
 
 .stream-mode-enabled .cats__image img {
