@@ -16,6 +16,32 @@
 
 }
 
+.heading--pride .heading__text {
+  background-image: linear-gradient(
+          to right,
+          #FFFFFF,
+          #FFAFC7,
+          #73D7EE,
+          #613915,
+          #000000,
+          #E50000,
+          #FF8D00,
+          #FFEE00,
+          #028121,
+          #004CFF,
+          #760088
+  );
+  background-image: url('/images/progresspride.png');
+  background-size: auto 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
+  font-weight: 900;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #000000;
+}
+
 .sub-heading {
   margin-top: 0;
   text-align: center;

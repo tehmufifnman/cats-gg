@@ -10,6 +10,8 @@ import PageFooterRouter from './PageFooterRouter';
 import { Link } from 'react-router-dom';
 import GithubCorner from './GithubCorner';
 
+const isJune = new Date().getMonth() === 5;
+
 class App extends Component {
   handleThemeToggle = () => {
     if (this.props.theme === Theme.Light) {
@@ -38,7 +40,17 @@ class App extends Component {
           {this.props.theme === Theme.Dark && '🌇'}
         </button>
         <div className="app__header">
-          <h1 className="heading">Cats.gg</h1>
+          <h1 className={[
+              'heading',
+              isJune && 'heading--pride',
+          ]
+              .filter(Boolean)
+              .join(' ')
+          }>
+            {isJune && '🏳️‍🌈'}
+            <span className="heading__text">Cats.gg</span>
+            {isJune && '🏳️‍🌈'}
+          </h1>
           <h3 className="sub-heading">
             <span>Bringing You Sweet Cat</span>
             {' '}
