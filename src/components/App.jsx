@@ -36,17 +36,20 @@ class App extends Component {
             onClick={this.handleThemeToggle}
             title="Toggle Theme"
         >
-          {this.props.theme === Theme.Light && '🌅'}
-          {this.props.theme === Theme.Dark && '🌇'}
+          {this.props.theme === Theme.Light && <span role="img" aria-label="Light mode">🌅</span>}
+          {this.props.theme === Theme.Dark && <span role="img" aria-label="Dark mode">🌇</span>}
         </button>
         <div className="app__header">
-          <h1 className={[
+          <h1
+            className={[
               'heading',
               isJune && 'heading--pride',
-          ]
+            ]
               .filter(Boolean)
               .join(' ')
-          }>
+            }
+            title={isJune && 'Happy pride month! You are loved. ❤'}
+          >
             {isJune && '🏳️‍🌈'}
             <span className="heading__text">Cats.gg</span>
             {isJune && '🏳️‍🌈'}
@@ -58,7 +61,7 @@ class App extends Component {
             {' '}
             <Link to="emoji">(and Emoji!)</Link>
             {' '}
-            <span>Since 2018 😻</span>
+            <span>Since 2018 <span role="img" aria-label="Heart eyes cat emoji">😻</span></span>
           </h3>
           <CatFact/>
         </div>
