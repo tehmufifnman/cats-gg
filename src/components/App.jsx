@@ -31,6 +31,14 @@ class App extends Component {
           .filter(Boolean)
           .join(' ')
       }>
+        {this.props.streamModeEnabled && (
+            <style>
+              body {'{'}
+                margin: 0px auto;
+                overflow: hidden;
+              {'}'}
+            </style>
+        )}
         <button
             className="app__theme-toggle"
             onClick={this.handleThemeToggle}

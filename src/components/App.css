@@ -114,3 +114,7 @@ a {
 .app.stream-mode-enabled > *:not(.app__body) {
   display: none;
 }
+
+.app.stream-mode-enabled {
+  background: transparent !important;
+}
