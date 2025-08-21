@@ -11,7 +11,7 @@ import delay from "../utils/delay";
 import coolCats from "../data/generated/cool-cats.json";
 import getRandomItem from "../utils/getRandomItem";
 
-const getRandomCatImage = getRandomImage('muffins', 'muffin', 'bluey', 'breakfast');
+const getRandomCatImage = getRandomImage('muffins', 'muffin', 'bluey');
 
 function* getNewPictureImage() {
   const picture = yield getRandomCatImage();

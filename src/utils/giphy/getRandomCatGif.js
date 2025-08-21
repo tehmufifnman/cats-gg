@@ -2,7 +2,7 @@ import getGiphyApiKey from './getGiphyApiKey';
 
 const createGetRandomCatGif = (apiKey) =>
     () =>
-        fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=muffin muffins breakfast food bluey&rating=pg`)
+        fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=muffin muffins bluey&rating=pg`)
             .then(response => response.json())
             .then(json => json.data)
             .then(data => data.images.original.url)
