@@ -59,7 +59,7 @@ class App extends Component {
             title={isJune && 'Happy pride month! You are loved. ❤'}
           >
             {isJune && '🏳️‍🌈'}
-            <span className="heading__text">Cats.gg</span>
+            <span className="heading__text">Muffin.gg</span>
             {isJune && '🏳️‍🌈'}
           </h1>
           <h3 className="sub-heading">

@@ -6,7 +6,7 @@ const initialState = {
   cat: '/favicon.ico',
   catGif: {
     image_url: '/favicon.ico',
-    url: 'cats.gg',
+    url: 'muffin.gg',
   },
   catFact: '',
   displayMode: displayMode.Gifs,
