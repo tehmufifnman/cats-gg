@@ -63,7 +63,7 @@ class App extends Component {
             {isJune && '🏳️‍🌈'}
           </h1>
           <h3 className="sub-heading">
-            <span>Bringing You Sweet Cat</span>
+            <span>Bringing You Muffin Cat</span>
             {' '}
             <Link to="/">Pics</Link>
             {' '}
